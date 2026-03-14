@@ -19,6 +19,6 @@ Open in Google Colab:
 
 [Open Notebook](https://colab.research.google.com/drive/16J61b2YLspqL7j6zMIvDChJa1Wyu0inx#scrollTo=Mbrx5l1jMMWj)
 
-## Example Output
+## Confusion Matrix
 
 ![Tracking Example](images/confusion.png)
