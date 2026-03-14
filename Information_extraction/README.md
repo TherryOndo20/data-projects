@@ -49,3 +49,8 @@ Each example includes:
 - The extractive approach struggles with tokenization issues caused by BERT subword tokenization.
 - The F1 score for LLaMA2 may **underestimate its real performance**, as metrics like **BLEU or semantic similarity** could better capture its output quality.
 
+## Notebook
+
+Run the project in Google Colab:
+
+[Open Notebook](https://colab.research.google.com/drive/1HsfE4WYk75S03aE5aFGEc3IjWbrHuz_E)
