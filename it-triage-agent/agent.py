@@ -1,7 +1,8 @@
 import anthropic
 import json
+import os
 
-client = anthropic.Anthropic()
+client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
 SYSTEM_PROMPT = """You are an expert IT support triage agent for an enterprise software company.
 
