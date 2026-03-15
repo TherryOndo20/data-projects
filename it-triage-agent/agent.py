@@ -1,10 +1,8 @@
 import anthropic
 import json
 import os
-import streamlit as st
 
-api_key = st.secrets.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_API_KEY")
-client = anthropic.Anthropic(api_key=api_key)
+client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
 SYSTEM_PROMPT = """You are an expert IT support triage agent for an enterprise software company.
 
@@ -56,7 +54,13 @@ def triage_ticket(ticket_text: str, user_name: str = "", department: str = "") -
     response_text = message.content[0].text.strip()
 
     try:
-        result = json.loads(response_text)
+        # Strip markdown code fences if present
+        clean = response_text.strip()
+        if clean.startswith("```"):
+            clean = clean.split("```")[1]
+            if clean.startswith("json"):
+                clean = clean[4:]
+        result = json.loads(clean.strip())
     except json.JSONDecodeError:
         # Fallback if JSON parsing fails
         result = {
