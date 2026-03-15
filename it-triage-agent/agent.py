@@ -1,8 +1,10 @@
 import anthropic
 import json
 import os
+import streamlit as st
 
-client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
+api_key = st.secrets.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_API_KEY")
+client = anthropic.Anthropic(api_key=api_key)
 
 SYSTEM_PROMPT = """You are an expert IT support triage agent for an enterprise software company.
 
